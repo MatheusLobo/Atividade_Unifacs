@@ -1,37 +1,39 @@
 package unifacs_atv;
 
+//Importação das classes Scanner e ArrayList
 import java.util.Scanner;
-
 import java.util.ArrayList;
 
+//Definição da classe Biblioteca
 public class Biblioteca {
-    private ArrayList<Livro> livros;
+ private ArrayList<Livro> livros; // Cria um ArrayList para armazenar os livros da biblioteca
 
-    public Biblioteca() {
-        livros = new ArrayList<>();
-    }
+ // Construtor da classe Biblioteca
+ public Biblioteca() {
+     livros = new ArrayList<>(); // Inicializa a lista de livros vazia
+ }
 
-    public void addlivro(Livro livro) {
-        livros.add(livro);
-    }
+ // Método para adicionar um livro à biblioteca
+ public void addlivro(Livro livro) {
+     livros.add(livro); // Adiciona o livro à lista de livros da biblioteca
+ }
 
-    public void Listarlivros() {
-        System.out.println("\nLivros Registrados:");
-        System.out.printf("%-25s %-25s %-25s %-25s %-25s\n",
-                "Titulo", "Autor", "Editora", "Ano de Publicação", "Numero de paginas");
-        for (Livro livro : livros) {
-            System.out.printf("%-25s %-25s %-25s %-25s %d\n",
-                    livro.getTitulo(), livro.getAutor(), livro.getEditora(),
-                    livro.getAnoPubli(), livro.getNumeroPaginas());
-        }
-    }
+ // Método para listar todos os livros da biblioteca
+ public void listarLivros() {
+     System.out.println("\nLivros Registrados:\n");
+     System.out.printf("%-25s %-25s %-25s\n", "Título", "Autor", "Editora\n"); // %-25s para formatar o comprimento da string, ocupando 25 espaços
+     for (Livro livro : livros) {
+         System.out.printf("%-25s %-25s %-25s\n", livro.getTitulo(), livro.getAutor(), livro.getEditora()); // Imprime o título, autor e editora do livro em formato de tabela
+     }
+ }
 
-    public Livro Buscador(String titulo) {
-        for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                return livro;
-            }
-        }
-        return null;
-    }
+ // Método para buscar um livro pelo título
+ public Livro buscarLivro(String titulo) {
+     for (Livro livro : livros) {
+         if (livro.getTitulo().toLowerCase().contains(titulo.toLowerCase())) { // Converte o título para minúsculas e verifica se o título convertido contém o título fornecido pelo usuário
+             return livro; // Retorna o livro encontrado
+         }
+     }
+     return null; // Retorna null caso o livro não seja encontrado
+ }
 }
