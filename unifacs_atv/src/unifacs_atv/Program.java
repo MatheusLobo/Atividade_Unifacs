@@ -70,6 +70,8 @@ public class Program {
                 }
             } else if (opcao == 4) {
                 break; // Encerra o loop e finaliza o programa
+            } else if (opcao<1 || opcao>=5) {
+            	System.out.println("Opção de numero ["+opcao+"] não é valida");
             }
         }
 
